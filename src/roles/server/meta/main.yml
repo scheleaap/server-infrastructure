@@ -1,0 +1,20 @@
+galaxy_info:
+  author: scheleaap
+  description: Server stuff
+  license: MIT
+  min_ansible_version: 1.2
+  platforms:
+    - name: Ubuntu
+      versions:
+      - trusty
+      - utopic
+      - vivid
+      - wily
+      - xenial
+      - zesty
+    - name: Debian
+      versions:
+      - jessie
+  galaxy_tags: []
+
+dependencies: []

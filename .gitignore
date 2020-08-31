@@ -1,0 +1,18 @@
+# Python
+*.pyc
+__pycache__/
+
+# Virtualenv
+.venv
+Pipfile.lock
+
+# Other
+.cache
+.molecule
+site.retry
+
+# Mine
+vault
+vault.yml
+vault.yaml
+hosts

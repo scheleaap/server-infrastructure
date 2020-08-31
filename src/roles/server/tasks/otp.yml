@@ -1,0 +1,9 @@
+---
+- name: "Refresh apt cache"
+  become: true
+  apt:
+    update_cache: true
+- name: "Install Google PAM"
+  become: true
+  apt:
+    name: libpam-google-authenticator
