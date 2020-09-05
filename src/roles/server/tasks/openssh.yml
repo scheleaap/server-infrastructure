@@ -24,3 +24,19 @@
     line: "ChallengeResponseAuthentication yes"
   notify:
     - restart openssh
+- name: "Disable password-only authentication for OpenSSH"
+  become: true
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: "^#?PasswordAuthentication "
+    line: "PasswordAuthentication no"
+  notify:
+    - restart openssh
+- name: "Disable password logins for root for OpenSSH"
+  become: true
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: "^#?PermitRootLogin "
+    line: "PermitRootLogin prohibit-password"
+  notify:
+    - restart openssh
