@@ -1,1 +1,7 @@
 ---
+- name: "Restart OpenSSH"
+  listen: "restart openssh"
+  become: true
+  service:
+    name: sshd
+    state: restarted

@@ -1,0 +1,26 @@
+---
+- name: "Refresh apt cache"
+  become: true
+  apt:
+    update_cache: true
+- name: "Install Google PAM"
+  become: true
+  apt:
+    name: libpam-google-authenticator
+- name: "Add Google Authenticator to PAM for OpenSSH"
+  become: true
+  blockinfile:
+    path: /etc/pam.d/sshd
+    marker: "# {mark} ANSIBLE MANAGED BLOCK - otp"
+    content: |
+      # Enable time-based one-time passwords
+      # Add "nullok" at the end to allow users without an OTP configuration to log in
+      auth required pam_google_authenticator.so
+- name: "Configure OTP for OpenSSH"
+  become: true
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: "^ChallengeResponseAuthentication "
+    line: "ChallengeResponseAuthentication yes"
+  notify:
+    - restart openssh

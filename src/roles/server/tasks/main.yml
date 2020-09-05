@@ -1,2 +1,2 @@
 ---
-- include: otp.yml
+- include: openssh.yml
