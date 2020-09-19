@@ -1,0 +1,2 @@
+---
+resolvconf_content: "{{ vault_resolvconf_content }}"

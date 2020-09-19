@@ -5,3 +5,9 @@
   service:
     name: sshd
     state: restarted
+- name: "Restart resolvconf"
+  listen: "restart resolvconf"
+  become: true
+  service:
+    name: resolvconf
+    state: restarted

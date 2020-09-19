@@ -12,7 +12,5 @@ Pipfile.lock
 site.retry
 
 # Mine
-vault
-vault.yml
-vault.yaml
+vault-password-file
 hosts
