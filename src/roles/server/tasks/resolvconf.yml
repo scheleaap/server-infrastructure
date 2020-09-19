@@ -1,3 +1,8 @@
+---
+# 2018-09-23
+# Ik heb de inhoud van /etc/resolvconf/resolv.conf.d/original aan .../head
+# toegevoegd. Dit is niet ideaal, maar ik vond geen betere oplossing en 
+# blogposts op internet doen het ook zo.
 - name: "Configure DNS resolvers"
   become: true
   blockinfile:
