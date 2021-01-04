@@ -1,46 +1,17 @@
-# Configuration for Servers
+# Server Infrastructure
 
-## Preparation
-
-### Master Machine
-
-Go to the target directory and run:
-
-```bash
-# Install pip3 and pipenv (needed only once)
-sudo apt purge python-pip && \
-sudo apt install python3-pip && \
-pip3 install --user pipenv
-
-# Create venv and activate
-PATH=~/.local/bin:$PATH && \
-pipenv --three && \
-pipenv shell
-
-# Install project dependencies
-pipenv update
-```
+This is an Ansible Playbook for my server infrastructure.
 
 
-### All Target Machines
+## Running it
 
-1. Create SSH directory:
-   ```bash
-   cd ~
-   install -d -m 700 ~/.ssh
-   ```
-
-1. **Run from another machine:**<br>
-   Copy public key to authorized_keys:
-   ```bash
-   cat ~/.ssh/id_rsa.pub | ssh <user>@<host> 'cat >> .ssh/authorized_keys'
+1. Copy all files whose name ends with `.default` and fill in the values as appropriate.
+1. ```sh
+   pipenv run ansible-galaxy install -r requirements.yml -p roles/
+   pipenv run ansible-playbook site.yml -i hosts --ask-become-pass --vault-password-file vault-password-file
    ```
 
 
-## Running It
+## Setup
 
-```bash
-pipenv shell
-ansible-galaxy install -r requirements.yml -p roles/
-ansible-playbook site.yml -i hosts --ask-become-pass --vault-password-file vault-password-file
-```
+See the [home infrastructure's README](https://github.com/scheleaap/home-infrastructure/blob/master/README.md#setup) for instructions.

@@ -1,4 +1,0 @@
-# Default inventory file
-
-#localhost ansible_connection=local
-#hostname ansible_user=username
