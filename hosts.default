@@ -1,4 +1,4 @@
 # Default inventory file
 
 #localhost ansible_connection=local
-#hostname ansible_python_interpreter=auto ansible_user=username
+#alias ansible_python_interpreter=auto ansible_host=hostname ansible_user=username ansible_become_pass=password

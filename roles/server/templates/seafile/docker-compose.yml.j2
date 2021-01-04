@@ -1,0 +1,44 @@
+version: "2.0"
+services:
+  db:
+    image: mariadb:10.1
+    container_name: seafile-mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD={{ seafile_mysql_root_password }}
+      - MYSQL_LOG_CONSOLE=true
+    volumes:
+      - /opt/seafile-mysql/db:/var/lib/mysql
+    networks:
+      - seafile-net
+
+  memcached:
+    image: memcached:1.5.6
+    container_name: seafile-memcached
+    entrypoint: memcached -m {{ seafile_memcached_size_mb }}
+    networks:
+      - seafile-net
+
+  seafile:
+    image: seafileltd/seafile-mc:latest
+    container_name: seafile
+    ports:
+      - "127.0.0.1:8001:80"
+      # - "443:443"
+    volumes:
+      - /opt/seafile-data:/shared
+    environment:
+      - DB_HOST=db
+      - DB_ROOT_PASSWD={{ seafile_mysql_root_password }}
+      # - TIME_ZONE=Etc/UTC  # Optional, default is UTC. Should be uncomment and set to your local time zone.
+      - SEAFILE_ADMIN_EMAIL={{ seafile_admin_email }}
+      - SEAFILE_ADMIN_PASSWORD={{ seafile_admin_password }}
+      - SEAFILE_SERVER_LETSENCRYPT=false
+      - SEAFILE_SERVER_HOSTNAME={{ seafile_server_hostname }}
+    depends_on:
+      - db
+      - memcached
+    networks:
+      - seafile-net
+
+networks:
+  seafile-net:

@@ -1,3 +1,6 @@
 ---
 - include: openssh.yml
 - include: resolvconf.yml
+  tags: resolvconf
+- include: seafile.yml
+  tags: seafile

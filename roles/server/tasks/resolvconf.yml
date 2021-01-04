@@ -8,11 +8,6 @@
   blockinfile:
     path: /etc/resolvconf/resolv.conf.d/head
     marker: "# {mark} ANSIBLE MANAGED BLOCK"
-    content: |
-      search colo.transip.net
-      nameserver 195.8.195.8
-      nameserver 195.135.195.135
-      nameserver 2a01:7c8:7000:195::8:195:8
-      nameserver 2a01:7c8:7000:195::135:195:135
+    content: "{{ resolvconf_content }}"
   notify:
     - restart resolvconf

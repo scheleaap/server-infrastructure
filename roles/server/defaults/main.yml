@@ -1,2 +1,7 @@
 ---
 resolvconf_content:
+seafile_admin_email: me@example.com
+seafile_admin_password: admin
+seafile_memcached_size_mb: 256
+seafile_mysql_root_password: admin
+seafile_server_hostname: seafile.example.com

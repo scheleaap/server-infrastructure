@@ -1,0 +1,32 @@
+---
+- name: "Ensure pip3 is installed"
+  become: true
+  apt:
+    name: python3-pip
+    state: present
+- name: "Ensure the Docker and Docker Compose packages for Python are installed"
+  become: true
+  pip:
+    name:
+      - docker
+      - docker-compose
+- name: "Ensure Seafile Docker Compose directory exists"
+  become: true
+  file:
+    path: /opt/seafile-docker-compose
+    state: directory
+    mode: 0755
+- name: "Configure Seafile"
+  become: true
+  template:
+    src: templates/seafile/docker-compose.yml.j2
+    dest: /opt/seafile-docker-compose/docker-compose.yml
+    mode: 0640
+  notify:
+    - restart seafile
+- name: "Copy Seafile management scripts"
+  become: true
+  copy:
+    src: files/seafile/
+    dest: /opt/seafile-docker-compose
+    mode: 0755

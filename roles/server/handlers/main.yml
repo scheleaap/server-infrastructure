@@ -11,3 +11,10 @@
   service:
     name: resolvconf
     state: restarted
+- name: "Restart Seafile"
+  listen: "restart seafile"
+  become: true
+  community.general.docker_compose:
+    project_src: /opt/seafile-docker-compose
+    build: no
+    restarted: yes
