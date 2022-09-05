@@ -15,3 +15,12 @@ This is an Ansible Playbook for my server infrastructure.
 ## Setup
 
 See the [home infrastructure's README](https://github.com/scheleaap/home-infrastructure/blob/master/README.md#setup) for instructions.
+
+
+## Development
+
+To encrypt and decrypt files, use these commands:
+```sh
+ansible-vault decrypt <path>/vault.yml --vault-password-file vault-password-file
+ansible-vault encrypt <path>/vault.yml --vault-password-file vault-password-file
+```
