@@ -3,5 +3,5 @@
   become_user: root
   become_method: sudo
   roles:
-#    - role: env-common
+    - role: env-common
     - role: server

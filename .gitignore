@@ -11,5 +11,10 @@ __pycache__/
 site.retry
 
 # Mine
+vault
+vault.yml
+vault.yaml
 vault-password-file
+experiments/
+roles/
 hosts
